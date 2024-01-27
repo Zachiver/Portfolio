@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Tailwind CSS</title>
     <link rel="stylesheet" href="dist/output.css">
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
 <body>
@@ -26,28 +33,40 @@
                     </button>
 
                     <nav id="nav-menu"
-                        class="hidden absolute py-5 bg-white shadow-xl rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                        class="hidden absolute py-5 bg-white shadow-xl rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-dark dark:shadow-slate-900 lg:dark:bg-transparent">
                         <ul class="block lg:flex">
                             <li class="group">
                                 <a href="#home"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Home</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Home</a>
                             </li>
                             <li class="group">
                                 <a href="#about"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">About
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">About
                                     Me</a>
                             </li>
                             <li class="group">
                                 <a href="#portfolio"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Portfolio</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Portfolio</a>
                             </li>
                             <li class="group">
                                 <a href="#skills"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Skills</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Skills</a>
                             </li>
                             <li class="group">
                                 <a href="#contact"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Contact</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Contact</a>
+                            </li>
+                            <li class="flex items-center pl-8 mt-3 lg:mt-0">
+                                <span class="mr-2 text-sm text-slate-500">light</span>
+                                <input type="checkbox" class="hidden" id="dark-toggle">
+                                <label for="dark-toggle">
+                                    <div class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
+                                        <div
+                                            class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out">
+                                        </div>
+                                    </div>
+                                </label>
+                                <span class="ml-2 text-sm text-slate-500">dark</span>
                             </li>
                         </ul>
                     </nav>
@@ -59,16 +78,17 @@
 
 
     <!-- Hero section Start -->
-    <section id="home" class="pt-36 mt-[5rem] mb-[8rem]">
+    <section id="home" class="pt-48 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full self-center px-4 lg:w-1/2">
                     <h1 class="text-base font-semibold text-primary md:text-xl">Hallo Semua 👋🏻,
-                        <span class="block font-bold text-dark text-4xl mb-4 lg:text-5xl">saya Ajie</span>
+                        <span class="block font-bold text-dark text-4xl mb-4 lg:text-5xl dark:text-white">saya
+                            Ajie</span>
                     </h1>
 
                     <h2 class="font-medium text-secondary text-lg lg:text-2xl">Student &
-                        <span class="text-dark lg:text-2xl">Front-end web developer</span>
+                        <span class="text-dark lg:text-2xl dark:text-white">Front-end web developer</span>
                     </h2>
 
                     <p class="font-medium text-secondary mb-16 leading-relaxed">
@@ -86,16 +106,16 @@
 
                 <div class="w-full self-end px-4 lg:w-1/2">
                     <div class="relative mt-16 lg:mt-0 lg:right-0">
-                        <img src="dist/img/profile2.png" alt="ajie" class="max-w-full mx-auto w-96 h-96">
-                        <span class="absolute -z-10 bottom-0 left-1/2 -translate-x-1/2 sm:scale-125 lg:scale-150 ">
-                            <svg width="350" height="350" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                        <img src="dist/img/profile2.png" alt="ajie" class="relative max-w-full mx-auto w-96 h-96 z-10">
+                        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 sm:scale-125 lg:scale-150 ">
+                            <svg width="325" height="325" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
                                 class="bloob">
                                 <path fill="#34d399"
                                     d="M42.4,-64.7C52.3,-59.5,56,-43.4,54.7,-29.8C53.4,-16.2,47.1,-5.2,46,7C44.9,19.2,48.9,32.6,46.5,46.5C44.1,60.5,35.2,75,24.3,74.4C13.4,73.7,0.5,57.9,-10.9,49C-22.3,40.2,-32.2,38.4,-46.2,33.7C-60.3,29,-78.3,21.4,-78.8,11.9C-79.3,2.4,-62.2,-9.1,-53.4,-22.8C-44.7,-36.5,-44.2,-52.3,-36.7,-58.6C-29.2,-64.9,-14.6,-61.5,0.8,-62.8C16.2,-64,32.4,-69.8,42.4,-64.7Z"
                                     transform="translate(100 100) scale(1.2)" />
                             </svg>
                         </span>
-                        <span class="absolute -z-10  bottom-0 left-1/2 -translate-x-1/2 sm:scale-100 lg:scale-150">
+                        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 sm:scale-100 lg:scale-150">
                             <svg width="350" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
                                 class="bloob-2">
                                 <path fill="#059669"
@@ -113,13 +133,14 @@
 
 
     <!-- About Section Start -->
-    <section id="about" class="pt-36 pb-32 mt-12">
+    <section id="about" class="pt-[16rem] pb-48 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full mb-10 px-9 lg:w-1/2">
                     <h4 class="font-bold uppercase text-primary text-lg mb-3">Tentang Saya</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-5 max-w-xl lg:text-4xl">Biografi</h2>
-                    <p class="font-medium text-base text-secondary lg:text-lg">Hallo my name is Ajie Dewa Aldiansyah, im
+                    <h2 class="font-bold text-dark text-3xl mb-5 max-w-xl lg:text-4xl dark:text-white">Biografi</h2>
+                    <p class="font-medium text-base text-secondary lg:text-lg dark:text-white">Hallo my name is Ajie
+                        Dewa Aldiansyah, im
                         15 years
                         old and now im study at SMKN 5 Kabupaten Tangerang, my passion is about web development or
                         specifically in Front-end web development. Im highly motivated and excited to learn more about
@@ -127,14 +148,16 @@
                         programmer in the future</p>
                 </div>
                 <div class="w-full px-9 lg:w-1/2">
-                    <h3 class="font-bold text-dark text-3xl mb-4 lg:text-3xl lg:pt-12">Mari Berteman</h3>
-                    <p class="font-medium text-base text-secondary mb-6 lg:text-lg">Ayo berteman dan membangun relasi
+                    <h3 class="font-bold text-dark text-3xl mb-4 lg:text-3xl lg:pt-12 dark:text-white">Mari Berteman
+                    </h3>
+                    <p class="font-medium text-base text-secondary mb-6 lg:text-lg dark:text-white">Ayo berteman dan
+                        membangun relasi
                         denganku di
                         media sosial😁</p>
                     <div class="flex items-center">
                         <!-- Instagram -->
                         <a href="https://instagram.com/Aldiynsh.__" target="_blank"
-                            class="w-11 h-11 mr-3 rounded-xl flex justify-center items-center border border-primary bg-primary text-white hover:border-slate-300 hover:bg-teal-600 hover:shadow-lg hover:shadow-teal-200">
+                            class="w-11 h-11 mr-3 rounded-xl flex justify-center items-center border border-primary bg-primary text-white hover:border-slate-300 hover:bg-teal-600 hover:shadow-sm hover:shadow-teal-200">
                             <svg role="img" width="30" class="fill-current" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <title>Instagram</title>
@@ -145,7 +168,7 @@
 
                         <!-- Github -->
                         <a href="https://github.com/Zachiver" target="_blank"
-                            class="w-11 h-11 mr-3 rounded-xl flex justify-center items-center border border-primary bg-primary text-white hover:border-slate-300 hover:bg-teal-600 hover:shadow-lg hover:shadow-teal-200">
+                            class="w-11 h-11 mr-3 rounded-xl flex justify-center items-center border border-primary bg-primary text-white hover:border-slate-300 hover:bg-teal-600 hover:shadow-sm hover:shadow-teal-200">
                             <svg role="img" width="30" viewBox="0 0 24 24" class="fill-current"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <title>GitHub</title>
@@ -162,12 +185,13 @@
 
 
     <!-- Portfolio Section Start -->
-    <section id="portfolio" class="pt-10 pb-16 bg-slate-200">
+    <section id="portfolio" class="pt-10 pb-16 bg-slate-200 dark:bg-slate-800">
         <div class="container">
             <div class="w-full px-4 text-center">
                 <div class="maw-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-xl text-primary mb-2 lg:text-2xl">Portfolio</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Project Terbaru</h2>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Project
+                        Terbaru</h2>
                     <p class="font-medium text-lg text-secondary">Beberapa proyek web programming yang telah saya buat
                         dengan penuh cinta dan kasih sayang</p>
                 </div>
@@ -178,7 +202,7 @@
                             <a href="#"><img src="dist/img/portfolio/project1.png" alt="bookshelf App"
                                     class="w-full"></a>
                         </div>
-                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3">Bookshelf-app</h3>
+                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3 dark:text-white">Bookshelf-app</h3>
                         <p class="font-medium text-base text-secondary">Sebuah program aplikasi web sederhana yang
                             berbasis html, css, dan javascript</p>
                     </div>
@@ -188,7 +212,7 @@
                             <a href="Zachiver/"><img src="dist/img/portfolio/project2.png" alt="bookshelf App"
                                     class="w-full"></a>
                         </div>
-                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3">Landing Page</h3>
+                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3 dark:text-white">Landing Page</h3>
                         <p class="font-medium text-base text-secondary">Website komersil sederhana bernama kedai pakcik
                         </p>
                     </div>
@@ -197,7 +221,7 @@
                         <div class="rounded-md sahdow-md overflow-hidden">
                             <img src="dist/img/portfolio/project3.png" alt="landing Page" class="w-full">
                         </div>
-                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3">Article</h3>
+                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3 dark:text-white">Article</h3>
                         <p class="font-medium text-base text-secondary">Artikel tentang biografi penemu algoritma</p>
                     </div>
                     <div
@@ -205,7 +229,7 @@
                         <div class="rounded-md sahdow-md overflow-hidden">
                             <img src="dist/img/portfolio/project4.png" alt="Personal Web" class="w-full">
                         </div>
-                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3">personal website</h3>
+                        <h3 class="font-semibold text-lg text-dark mt-5 mb-3 dark:text-white">personal website</h3>
                         <p class="font-medium text-base text-secondary">Website yg berisi portfolio dan kontak pribadi
                         </p>
                     </div>
@@ -217,27 +241,37 @@
 
 
     <!-- Skills Section Start -->
-    <section id="skills" class="pt-12 pb-12 bg-slate-800">
+    <section id="skills" class="pt-12 pb-12 bg-slate-800 dark:bg-slate-500">
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center">
                     <h4 class="font-semibold text-lg text-primary mb-10 lg:text-3xl">Skills</h4>
-                    <div class="flex flex-wrap items-center justify-center mb-40">
-                        <h2 class="font-bold text-white mx-auto text-3xl mb-10">Tech Stack</h2>
-                        <div class="flex justify-between sm:gap-6 md:gap-[3rem]">
-                            <img src="dist/img/tech-stack/html.png" alt="html"
-                                class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
-                            <img src="dist/img/tech-stack/css.png" alt="html"
-                                class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
-                            <img src="dist/img/tech-stack/javascript.png" alt="html"
-                                class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
-                            <img src="dist/img/tech-stack/tailwind.png" alt="html"
-                                class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
-                            <img src="dist/img/tech-stack/bootstrap.png" alt="html"
-                                class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
+                    <div class="">
+                        <h2 class="font-bold text-white mx-auto text-3xl mb-10 dark:text-dark">Tech Stack</h2>
+                        <div class="flex justify-between items-center mb-52">
+                            <div class="">
+                                <img src="dist/img/tech-stack/html.png" alt="html" height="80" width="80"
+                                    class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
+                            </div>
+                            <div>
+                                <img src="dist/img/tech-stack/css.png" alt="css" height="80" width="80"
+                                    class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
+                            </div>
+                            <div>
+                                <img src="dist/img/tech-stack/javascript.png" alt="javascript" height="80" width="80"
+                                    class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
+                            </div>
+                            <div>
+                                <img src="dist/img/tech-stack/tailwind.png" alt="tailwind" width="100" height="80"
+                                    class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
+                            </div>
+                            <div>
+                                <img src="dist/img/tech-stack/bootstrap.png" alt="bootstrap" width="100" height="80"
+                                    class="w-[80px h-[80px] grayscale duration-200 transition hover:grayscale-0 hover:scale-105 mb-6 ">
+                            </div>
                         </div>
                     </div>
-                    <h2 class="font-bold text-white mx-auto text-3xl mb-10">Tools</h2>
+                    <h2 class="font-bold text-white mx-auto text-3xl mb-10 dark:text-dark">Tools</h2>
                     <div class="flex flex-wrap items-center justify-center">
                         <div class="flex justify-between gap-6">
                             <img src="dist/img/tools/git.png" alt="html"
@@ -258,12 +292,13 @@
 
 
     <!-- Contact Section start -->
-    <section id="contact" class="pt-36 pb-32">
+    <section id="contact" class="pt-36 pb-32 dark:bg-dark">
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Contact</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Hubungi Saya</h2>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Hubungi Saya
+                    </h2>
                     <p class="font-medium text-lg text-secondary md:text-xl">Lorem ipsum, dolor sit amet consectetur
                         adipisicing elit. Iusto, iste?
                     </p>
@@ -275,17 +310,17 @@
                     <div class="w-full mb-8 px-4">
                         <label for="name" class="text-base text-primary font-bold">Nama</label>
                         <input type="text" id="name"
-                            class="w-full h-11 bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                            class="w-full h-11 bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary dark:bg-white">
                     </div>
                     <div class="w-full mb-8 px-4">
                         <label for="email" class="text-base text-primary font-bold">Email</label>
                         <input type="email" id="email"
-                            class="w-full h-11 bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                            class="w-full h-11 bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary dark:bg-white">
                     </div>
                     <div class="w-full mb-8 px-4">
                         <label for="message" class="text-base text-primary font-bold">Pesan</label>
                         <textarea type="text" id="message" class="w-full h-36 bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary
-                        focus:ring-1 focus:border-primary"></textarea>
+                        focus:ring-1 focus:border-primary dark:bg-whi"></textarea>
                     </div>
                     <div class="w-full px-4">
                         <button
@@ -376,6 +411,15 @@
     </footer>
     <!-- Footer Section End -->
 
+    <!-- Back To Top Button Start -->
+    <div>
+        <a href="#home"
+            class="hidden fixed items-center bottom-4 right-4 h-14 w-14 z-[9999] justify-center rounded-full bg-primary p-4 hover:animate-pulse"
+            id="to-top">
+            <span class="mt-2 block h-5 w-5 rotate-45 border-t-2 border-l-2"></span>
+        </a>
+    </div>
+    <!-- Back To Top Button End -->
 
     <!-- script js -->
     <script src=" dist/js/script.js">
